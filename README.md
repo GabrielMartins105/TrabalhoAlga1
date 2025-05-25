@@ -7,7 +7,7 @@
 </h1>
 
 <h2 align="center">
-  <img src = "https://github.com/GabrielMartins105/Simulado1-de-Algo/blob/main/sqoq7XY.png?raw=true" />
+  <img src = "https://i.imgur.com/FiEjcvO.png" />
 </h2>
 
 <h3 allign = "left">
