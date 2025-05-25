@@ -1,0 +1,60 @@
+
+char* longestNiceSubstring( char* s ) {
+	int tamanho = strlen( s );
+	
+	if( tamanho < 2 ) {
+		return strdup( "" );
+	}
+
+	char* nice = malloc( tamanho + 1 );
+	char* outroNice = malloc( tamanho + 1 );
+	if( !nice || !outroNice ) {
+		free( nice );
+		free( outroNice );
+		return strdup( "" );
+	}
+	
+	nice[0] = '\0';
+	int tamFinal = 0;
+	int c = 0;
+	int i = 0;
+	for( c = 0; c < tamanho; c++ ) {
+		char min[27] = "{00000000000000000000000000}";
+		char mai[27] = "{00000000000000000000000000}";
+		int k = 0;
+		
+		for( int i = c; i < tamanho; i++ ) {
+			char temp = s[i];
+			if( islower( temp ) ) {
+				min[temp - 'a'] = '1';
+			} else {
+				mai[temp - 'A'] = '1';
+			}
+			outroNice[k++] = temp;
+			outroNice[k] = '\0';
+			
+			int verificador = 1;
+			int alfabeto;
+			for( alfabeto = 0; alfabeto < 26; alfabeto++ ) {
+				if( min[alfabeto] != mai[alfabeto] ) {
+					verificador = 0;
+					break;
+				}
+			}
+			
+			if( verificador != 0 && k > tamFinal ) {
+				tamFinal = k;
+				strcpy( nice, outroNice );
+			}
+		}
+	}
+
+	free( outroNice );
+	
+	if( tamFinal == 0 ) {
+		free( nice );
+		return "";
+	}
+	
+	return nice;
+}
