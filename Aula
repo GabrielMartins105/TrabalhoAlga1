@@ -1,0 +1,48 @@
+#include <ctype.h>
+
+char* longestNiceSubstring(char* s) {
+     int tamanho = strlen( s );
+
+   char * outroNice = malloc(tamanho+1 *sizeof(char));
+
+	int mai=0,min=0;
+    int c=0,i=1;
+
+    if( tamanho == 0 || tamanho == 1 ){
+        return "";
+    }
+
+    for( c=0;c<tamanho;c++ ){
+
+       char temp = s[c];
+        int k=0;
+        for( i=0;i<tamanho;i++ ){
+            
+            
+				if( (s[i]) == tolower(temp)){
+					outroNice[k] = tolower(temp);
+					s[i] = ' ';
+					k++;
+					}
+            
+				if ( (s[i]) == toupper(temp) ){				
+					outroNice[k] = toupper(s[i]);
+					s[i] = ' ';
+					k++;
+					}
+                }
+				
+		if( mai>0 && min>0 ){
+			return outroNice;
+					               }
+			else{
+				mai = 0;
+				min = 0;
+				outroNice = NULL;
+                }      
+        i = 0;
+
+    }
+    
+    return "";
+}
