@@ -1,0 +1,93 @@
+char* longestNiceSubstring( char* s ) {
+	int tamanho = strlen( s );
+	
+	if( tamanho < 2 ) {
+		return "";
+	}
+
+	char *outroNice = malloc( tamanho + 1 );
+	char *nice = malloc( tamanho + 1 );
+	if( !outroNice || !nice ) {
+		free( outroNice );
+		free( nice );
+		return NULL;
+	}
+	
+	nice[0] = '\0';
+	int ultimo = 0;
+
+	int total = 0;
+	int mai = 0, min = 0;
+	strcpy( outroNice, s );
+	for( int c = 0; c < tamanho; c++ ) {
+		char temp = s[c];
+		min = 0;
+		mai = 0;
+		for( int i = 0; i < tamanho; i++ ) {
+			if( outroNice[i] == tolower( temp ) ) {
+				min++;
+				outroNice[i] = '1';
+			}
+			if( outroNice[i] == toupper( temp ) ) {
+				mai++;
+				outroNice[i] = '1';
+			}
+		}
+		if( min > 0 && mai > 0 ) {
+			total += min + mai;
+		}
+	}
+
+	if( total == tamanho ) {
+		return s;
+	}
+
+	outroNice[0] = '\0';
+
+	for( int c = 0; c < tamanho - 1; c++ ) {
+		char temp = s[c];
+		int k = 0;
+		mai = 0, min = 0;
+
+		for( int i = c; i < tamanho; i++ ) {
+			if( ultimo > 0 && ( toupper( temp ) == nice[ultimo-1] || tolower( temp ) == nice[ultimo-1] ) ) {
+				i = tamanho-1;
+			}
+
+			if( s[i] == tolower( temp ) ) {
+				outroNice[k++] = tolower( temp );
+				min++;
+			} else if( s[i] == toupper( temp ) ) {
+				outroNice[k++] = toupper( temp );
+				mai++;
+			} else if( s[i] != tolower( temp ) && s[i] != toupper( temp ) ) {
+				break;
+			}
+		}
+		
+		outroNice[k] = '\0';
+		
+		if( mai > 0 && min > 0 ) {
+			if( ultimo == 0 ) {
+				strcpy( nice, outroNice );
+				nice[tamanho] = '\0';
+				ultimo = k;
+			}
+
+			if( c > 0 && ( s[c-1] == tolower( nice[ultimo-1] ) || s[c-1] == toupper( nice[ultimo-1] ) ) ) {
+				strcat( nice, outroNice );
+				ultimo += k;
+			}
+		}
+	}
+
+	free( outroNice );
+	
+	if( nice[0] == '\0' ) {
+		free( nice );
+		return "";
+	}
+	
+	nice[ultimo] = '\0';
+	return nice;
+}
