@@ -7,36 +7,38 @@
 </h1>
 
 <p>
-  A string s is nice if, for every letter of the alphabet that s contains, it appears both in uppercase and lowercase. For example, "abABB" is nice because 'A' and 'a' appear, and 'B' and 'b' appear. However, "abA" is not because 'b' appears, but 'B' does not.
+  You are given a string s and two integers x and y. You can perform two types of operations any number of times.
 
-Given a string s, return the longest substring of s that is nice. If there are multiple, return the substring of the earliest occurrence. If there are none, return an empty string.
+Remove substring "ab" and gain x points.
+For example, when removing "ab" from "cabxbae" it becomes "cxbae".
+Remove substring "ba" and gain y points.
+For example, when removing "ba" from "cabxbae" it becomes "cabxe".
+Return the maximum points you can gain after applying the above operations on s.
+</p>
 
- 
+<p>
+  Example 1:
 
-Example 1:
-
-Input: s = "YazaAay"
-Output: "aAa"
-Explanation: "aAa" is a nice string because 'A/a' is the only letter of the alphabet in s, and both 'A' and 'a' appear.
-"aAa" is the longest nice substring.
+Input: s = "cdbcbbaaabab", x = 4, y = 5
+Output: 19
+Explanation:
+- Remove the "ba" underlined in "cdbcbbaaabab". Now, s = "cdbcbbaaab" and 5 points are added to the score.
+- Remove the "ab" underlined in "cdbcbbaaab". Now, s = "cdbcbbaa" and 4 points are added to the score.
+- Remove the "ba" underlined in "cdbcbbaa". Now, s = "cdbcba" and 5 points are added to the score.
+- Remove the "ba" underlined in "cdbcba". Now, s = "cdbc" and 5 points are added to the score.
+Total score = 5 + 4 + 5 + 5 = 19.
 Example 2:
 
-Input: s = "Bb"
-Output: "Bb"
-Explanation: "Bb" is a nice string because both 'B' and 'b' appear. The whole string is a substring.
-Example 3:
-
-Input: s = "c"
-Output: ""
-Explanation: There are no nice substrings.
+Input: s = "aabbaaxybbaabb", x = 5, y = 4
+Output: 20
 </p>
 
 <h2 align="center">
-  <img src = "https://i.imgur.com/FiEjcvO.png" />
+  <img src = "[https://i.imgur.com/FiEjcvO.png](https://i.imgur.com/a5ZpSjv.png)" />
 </h2>
 
 <h3 allign = "left">
   <p>
-    Testei os 3 exemplos principais apresentados no LeetCode.
+    Foi aprovado pelo submit do LeetCode.
   </p>
 </h3>
