@@ -34,7 +34,7 @@ Output: 20
 </p>
 
 <h2 align="center">
-  <img src = "[https://i.imgur.com/FiEjcvO.png](https://i.imgur.com/a5ZpSjv.png)" />
+  <img src = "https://i.imgur.com/FiEjcvO.png(https://i.imgur.com/a5ZpSjv.png)" />
 </h2>
 
 <h3 allign = "left">
