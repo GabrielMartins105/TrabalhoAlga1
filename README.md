@@ -3,7 +3,7 @@
 <h1 align="center" >
   <p> Nome: Gabriel Vieira Martins</p>
   <p>Turma: M2</p>
-  <p>Trabalho: Leet Code 1763</p>
+  <p>Trabalho: Leet Code 1717</p>
 </h1>
 
 <p>
